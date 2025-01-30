@@ -2,10 +2,6 @@ import React, { useState } from 'react'
 import './Login.css'
 import illustration from "../Assets/login.png"
 import { useNavigate } from 'react-router'
-<<<<<<< HEAD
-import ConicGradientBackground from './ConicGradientBackground'
-=======
->>>>>>> 608db045d313564aa7437593f9f833ac36e0db68
 
 function Login() {
   const [email, setEmail]=useState('')
@@ -67,22 +63,9 @@ function Login() {
 }
 
 
-<<<<<<< HEAD
-
-
-  return (
-    <div className='login__container center'>
-              <div className='login__container1 center'
- 
- >
-    
-    
-
-=======
   return (
     <div className='login__container center'>
        
->>>>>>> 608db045d313564aa7437593f9f833ac36e0db68
        
         <div className='justify-end login__image'><img className=""  src={illustration}/></div>
         <div className='login__form'>
@@ -99,10 +82,6 @@ function Login() {
                   </form>
 
           </div>
-<<<<<<< HEAD
-          </div>
-=======
->>>>>>> 608db045d313564aa7437593f9f833ac36e0db68
            
         </div>
        

@@ -20,7 +20,6 @@ const app = express();
 
 const mongoURL =
 "mongodb://0.0.0.0:27017/EmployeeRecognitionSystem";
-// 'mongodb+srv://sosinasisay29:WlbkXeO0mdHzTYf5@cluster0.tqei7fw.mongodb.net/'
 
 mongoose
   .connect(mongoURL)
