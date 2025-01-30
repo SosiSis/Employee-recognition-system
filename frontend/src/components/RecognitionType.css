@@ -1,0 +1,27 @@
+.recognition-type{
+    margin: 0px 0px 0px 40px;
+
+}
+.recognition-type h1{
+    text-align: start;
+    font-family: "Poppins";
+
+}
+.recognition-type__container{
+    display: flex;
+    justify-content: start;
+    align-items: center;
+
+}
+.recognition-type__form{
+    text-align: start;
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    width: 40vw;
+
+}
+.recognition-type__form textarea{
+    height: 30vh;
+   
+}

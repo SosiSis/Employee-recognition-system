@@ -1,0 +1,28 @@
+.support-page__cotainer{
+    display: flex;
+    justify-content: center;
+    margin: 20px;
+    
+   
+
+}
+.support-page{
+    background-color: rgb(239, 239, 239);
+    width: 60vw;
+   
+}
+.support-page__message-history{
+    border:1px solid #c3cbc6;
+    border-radius: 10px;
+    box-shadow: 0 0 5px 5px rgba(25, 164, 74, 0.15);
+    height: 60vh;
+    width: 58vw;
+    margin: 10px;
+
+}
+.support-page__message textarea{
+    height: 30vh;
+    width: 57vw;
+
+
+}

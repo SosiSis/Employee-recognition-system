@@ -1,0 +1,40 @@
+.nomination{
+   
+  display: flex;
+  justify-content: start;
+  align-items: center;
+}
+.nomination h1{
+    text-align: start;
+    font-family: "Poppins";
+   margin: 20px 20px 10px 0px;
+  
+}
+
+.nomination__form__container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 40vw;
+}
+.nomination__form{
+    text-align: start;
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    width: 40vw;
+
+}
+
+
+input, textarea , select{
+    padding: 5px;
+    margin: 5px;
+    border:1px solid #c3cbc6;
+    border-radius: 10px;
+    box-shadow: 0 0 5px  rgba(25, 164, 74, 0.15);
+}
+.nomination__form textarea{
+    height: 30vh;
+   
+}

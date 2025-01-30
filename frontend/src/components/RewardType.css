@@ -1,0 +1,22 @@
+.reward-type{
+ margin-left:40px ;
+}
+
+.reward-type__form__container{
+    display: flex;
+    justify-content: start;
+    align-items: center;
+
+}
+.reward-type__form{
+    text-align: start;
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    width: 40vw;
+
+}
+.reward-type__form textarea{
+    height: 30vh;
+   
+}

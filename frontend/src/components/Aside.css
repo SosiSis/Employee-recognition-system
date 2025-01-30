@@ -1,0 +1,51 @@
+.aside{
+    width: 20vw;
+    margin: 40px 0px;
+}
+.aside:hover{
+    transform:scale(1.05);
+}
+
+.personal-profile {
+    width: 75%;
+    display: flex;
+    justify-content: start;
+    
+    margin: 10px 30px ;
+    border:1px solid #c3cbc6;
+    border-radius: 10px;
+    box-shadow: 0 0 5px  rgba(25, 164, 74, 0.15);
+}
+
+
+.personal-profile .picture{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: px;
+    
+}
+.personal-profile .picture img{
+     width: 20px;
+    height: 20px; 
+
+}
+.personal-information{
+   padding: 10px;
+
+}
+
+.personal-information p{
+    padding: 0px;
+    margin: 0px;
+}
+.aside-menu{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 30px;
+    border:1px solid #c3cbc6;
+    border-radius: 10px;
+    box-shadow: 0 0 5px  rgba(25, 164, 74, 0.15);
+}

@@ -1,0 +1,18 @@
+.reward{
+margin-left: 40px;
+}
+
+.reward__container{
+    display: flex;
+    justify-content: start;
+    align-items: center;
+
+}
+.reward__form{
+    text-align: start;
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    width: 40vw;
+
+}

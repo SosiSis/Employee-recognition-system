@@ -1,0 +1,28 @@
+.nomination-setting{
+    margin-left:40px ;
+}
+.nomination-setting h1{
+    text-align: center;
+    font-family: "Poppins";
+
+}
+.nomination-setting__form__container{
+    display: flex;
+    justify-content: start;
+    align-items: center;
+   
+}
+
+.nomination-setting__form{
+    text-align: start;
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    width: 40vw;
+}
+
+.button{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

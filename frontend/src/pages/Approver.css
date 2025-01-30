@@ -1,0 +1,39 @@
+
+.flexed__container{
+    display: flex;
+   
+    margin: 20px;
+}
+.flex-center{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border:1px solid #c3cbc6;
+    border-radius: 15px;
+    box-shadow: 0 0 5px   rgba(25, 164, 74, 0.15);
+    border-top-right-radius:0% ;
+    border-bottom-right-radius: 0%;
+    margin-top: 5px;
+    margin-right: 5px;
+    padding: 13px;
+    height: 40px;
+
+}
+.centered__text{
+    text-align: center;
+    margin: 40px;
+}
+.flexed{
+    display: flex;
+    justify-content: end;
+    width: 45vw;
+}
+.flexed select{
+    width: 30vw;
+    border-top-left-radius: 0%;
+    border-bottom-left-radius: 0%;
+    padding: 5px;
+    margin-left: 2px;
+   
+    height: 40px;
+}

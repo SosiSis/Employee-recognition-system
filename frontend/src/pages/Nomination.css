@@ -1,0 +1,32 @@
+.flex{
+    display: flex;
+}
+.flex.justify-evenly div{
+    
+
+}
+.grid-3{
+    display: grid;
+    grid-template-columns: 390px 390px 390px ;
+}
+.nomination__image{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 50px 0px;
+}
+.nomination__image .img{
+    width: 40vh;
+    height: 30vh;
+    
+    
+}
+.blur{
+    backdrop-filter :blur(5px);
+/* background-color :; */
+}
+.text-2xl.font-bold{
+  
+    margin: 40px 40px 10px 20px ;
+    font-family: 'Poppins';
+}

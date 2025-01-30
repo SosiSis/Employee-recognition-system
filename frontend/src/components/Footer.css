@@ -1,0 +1,14 @@
+.footer{
+    background-color: black;
+    color: white;
+    height: 50vh;
+    display: flex;
+}
+.footer__right{
+    flex: 1 1 50%;
+    border-left: 1px solid rgb(122, 118, 118);
+}
+.footer__left{
+    flex: 1 1 50%;
+
+}

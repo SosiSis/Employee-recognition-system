@@ -1,0 +1,82 @@
+.login__container{
+   display: flex;
+   height: 100vh;
+  
+
+
+}
+.login__image{
+    flex: 1 1 40%;
+    display: flex;
+    justify-content: end;
+}
+.login__image img{
+    height:60vh;
+    width: 35vw;
+    
+
+}
+img{
+    max-width: 100%;
+    max-height: 100%;
+}
+.login__form{
+    flex: 1 1 50%;
+   
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.login__form form{
+    border: none;
+    box-shadow: none;
+    text-align: start;
+    width: 30vw;
+    height: 50%;
+    display: flex;
+    flex-direction: column;
+}
+.login__form form h3{
+    text-align: center;
+    font-family: "Poppins";
+    margin: 10px;
+  
+    
+}
+form label{
+    padding: 10px;
+<<<<<<< HEAD
+}
+/* Login.css */
+.login__container1 {
+    width: 100vw;
+    height: 100vh;
+    background: 
+      radial-gradient(circle at 20% 30%, #a7f9d0, transparent 60%),
+      radial-gradient(circle at 80% 40%, #DDCCF8, transparent 60%),
+      radial-gradient(circle at 50% 80%, #F5C9D9, transparent 60%);
+    animation: move-gradients 10s infinite ease-in-out;
+    background-size: 200% 200%;
+  }
+  
+  @keyframes move-gradients {
+    0% {
+      background-position: 0% 0%;
+    }
+    50% {
+      background-position: 100% 100%;
+    }
+    100% {
+      background-position: 0% 0%;
+    }
+  }
+  
+  .center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+=======
+}
+>>>>>>> 608db045d313564aa7437593f9f833ac36e0db68

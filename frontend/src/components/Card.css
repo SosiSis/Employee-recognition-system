@@ -1,0 +1,53 @@
+.card__container {
+    /* display: flex;
+    flex-direction: column;
+    justify-content: space-evenly; */
+    /* border:1 solid #c3cbc6; */
+    border-radius: 10px;
+    box-shadow: 0 0 5px  rgba(25, 164, 74, 0.15);
+    align-items: center;
+    width: 27vw;
+    margin: 20px;
+    padding: 10px;
+    
+    
+}
+.card__container:hover{
+    transform:scale(1.05);
+}
+.card__profile {
+    display: flex;
+    justify-content: start;
+    text-align: start;
+    margin: 10px 0px 0px 0px;
+}
+ 
+
+.profile_picture{
+    margin: 0px 20px;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+}
+button{
+    width: 156px;
+    height: 35px;
+    border:1px solid #c3cbc6;
+    border-radius: 10px;
+    box-shadow: 0 0 5px  rgba(25, 164, 74, 0.15);
+    margin: 20px;
+    background-color: #19a44a;
+    color: white;
+}
+.end{
+    display: flex;
+    justify-content: end;
+}
+.card__profile button{
+    width: 90px;
+    height: 28px;
+    background-color: #19a44a;
+    color: white;
+    margin: 5px;
+
+}

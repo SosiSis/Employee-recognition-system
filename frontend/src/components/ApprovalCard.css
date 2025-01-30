@@ -1,0 +1,31 @@
+
+.approval__card{
+width: 30vw;
+
+padding: 20px;
+margin: 10px;
+text-overflow: ellipsis;
+word-wrap: break-word;
+/* border:1px solid #c3cbc6; */
+border-radius: 5px;
+box-shadow: 0 0 5px   rgba(25, 164, 74, 0.15);
+text-align: start;
+transition: transform 0.1s ease-in;
+}
+.secondary__button{
+    background-color: white;
+    color: black;
+    box-shadow: 0 0 5px rgba(25, 164, 74, 0.15);
+}
+.buttons{
+    display: flex;
+    justify-content: space-between;
+ 
+}
+ .approval__card:hover {
+    transform:scale(1.05);
+}
+button:hover{
+    transform:scale(1.05);
+
+}

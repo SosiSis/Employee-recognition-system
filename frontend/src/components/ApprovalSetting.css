@@ -1,0 +1,23 @@
+.approval-setting {
+  margin-left:40px ;
+}
+.approval-setting__form__container{
+    display: flex;
+    justify-content: start;
+    align-items: center;
+   
+}
+
+.approval-setting__form{
+    text-align: start;
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    width: 40vw;
+}
+form{
+  border:1px solid #c3cbc6;
+border-radius: 5px;
+box-shadow: 0 0 5px   rgba(25, 164, 74, 0.15);
+padding: 20px;
+}

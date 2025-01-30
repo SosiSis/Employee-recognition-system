@@ -1,0 +1,5 @@
+.setting__container{
+    margin: 30px 200px 0px 0px ;
+    display: flex;
+    justify-content: space-between;
+}

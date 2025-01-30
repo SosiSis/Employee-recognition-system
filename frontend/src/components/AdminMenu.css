@@ -1,0 +1,25 @@
+.admin__menu{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 30px;
+    width:20% ;
+    height: 20%;
+    border:1px solid #c3cbc6;
+    border-radius: 10px;
+    box-shadow: 0 0 5px  rgba(25, 164, 74, 0.15);
+}
+.admin__menu:hover{
+    transform:scale(1.05);
+}
+.link{
+    text-decoration: none;
+    color: black;
+}
+.link:hover{
+    font-weight: bold;
+}
+.link:active {
+    background-color: #c3cbc6;
+}

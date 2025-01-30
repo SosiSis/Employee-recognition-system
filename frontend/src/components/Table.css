@@ -1,0 +1,22 @@
+.table-container{
+    
+    display: flex;
+    justify-content: center;
+}
+.table{
+    width: 70vw;
+
+}
+.row{
+    display: flex;
+    justify-content: space-around;
+    padding: 10px;
+}
+.background{
+    background-color: rgb(216, 214, 214);
+}
+.pagination{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
