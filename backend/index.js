@@ -46,8 +46,8 @@ app.use("/api/reward", reward);
 app.use("/api/reward_type", reward_type);
 app.use("/api/support", support);
 
-const PORT = 3010;
+const PORT = process.env.PORT || 3010;
 app.listen(PORT, () => {
-  console.log(`The server is running on port number ${PORT}`);
+  console.log(`The server is running on port number ${ PORT}`);
 });
 
