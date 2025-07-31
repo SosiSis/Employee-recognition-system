@@ -1,3 +1,4 @@
+require('dotenv').config();
 const express = require("express");
 const mongoose = require("mongoose");
 const cors = require("cors");
@@ -18,8 +19,7 @@ const app = express();
 
 
 
-const mongoURL =
-"mongodb://0.0.0.0:27017/EmployeeRecognitionSystem";
+const mongoURL = process.env.DB_ATLAS_HOST || process.env.DB_LOCAL_HOST || process.env.DB_REMOTE_HOST;
 
 mongoose
   .connect(mongoURL)
