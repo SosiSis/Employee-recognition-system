@@ -83,7 +83,7 @@ const Report = () => {
   } = theme.useToken();
  const token = localStorage.getItem('authToken')
   useEffect(() => {
-    fetch('http://localhost:3010/api/report/all',{headers:{'authToken':token}}) // replace with your endpoint URL
+    fetch('https://employee-recognition-system.onrender.com/api/report/all',{headers:{'authToken':token}}) // replace with your endpoint URL
       .then(response => response.json())
       .then(data => {
         // Transform the API data to match the table's data structure

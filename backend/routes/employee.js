@@ -104,7 +104,7 @@ router.patch('/:id',auth,upload.single('profilePicture'),async (req,res)=>{
    if(req.file){
         const profile= req.file;
         console.log(profile)
-        const serverBaseURL = "http://localhost:3010";
+        const serverBaseURL = "https://employee-recognition-system.onrender.com";
           profilePicture  = `${serverBaseURL}/public/${profile.filename}`;
       }
   const update={

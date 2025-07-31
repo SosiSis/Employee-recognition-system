@@ -14,7 +14,7 @@ const employeeSchema = new mongoose.Schema({
   },
   profilePicture: {
     type: String,
-    default:"http://localhost:3010/public/defaultProfilePicture.jpg"
+    default:"https://employee-recognition-system.onrender.com/public/defaultProfilePicture.jpg"
   },
   email: {
     type: String,

@@ -52,7 +52,7 @@ function Approver() {
     });
   };
   useEffect(() => {
-    fetch('http://localhost:3010/api/nomination/nomination-count', {headers: {
+    fetch('https://employee-recognition-system.onrender.com/api/nomination/nomination-count', {headers: {
       'Content-Type': 'application/json',
       'authToken': token,
     },

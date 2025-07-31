@@ -12,7 +12,7 @@ function RewardSetting() {
   useEffect(() => {
     const fetchRecognitionType = async () => {
       try {
-        const response = await fetch('http://localhost:3010/api/recognition_type', {
+        const response = await fetch('https://employee-recognition-system.onrender.com/api/recognition_type', {
           headers: {
             'Content-Type': 'application/json',
             'authToken': token,
@@ -35,7 +35,7 @@ function RewardSetting() {
 
     const fetchRewardType = async () => {
       try {
-        const response = await fetch('http://localhost:3010/api/reward_type', {
+        const response = await fetch('https://employee-recognition-system.onrender.com/api/reward_type', {
           headers: {
             'Content-Type': 'application/json',
             'authToken': token,
@@ -64,7 +64,7 @@ function RewardSetting() {
     event.preventDefault();
 
     try {
-      const response = await fetch('http://localhost:3010/api/reward', {
+      const response = await fetch('https://employee-recognition-system.onrender.com/api/reward', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

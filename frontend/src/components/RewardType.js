@@ -8,7 +8,7 @@ function RewardType() {
   const token = localStorage.getItem('authToken');
   const submit = (e) => {
     e.preventDefault();
-    fetch("http://localhost:3010/api/reward_type", {
+    fetch("https://employee-recognition-system.onrender.com/api/reward_type", {
       headers: {
         'Content-Type': 'application/json',
         'authToken': token,

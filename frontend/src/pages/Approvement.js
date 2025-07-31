@@ -18,7 +18,7 @@ function Approvement() {
     setLoading(true);
     setError(null);
     fetch(
-      `http://localhost:3010/api/nomination/nomination-details/${id}/${type}`,
+      `https://employee-recognition-system.onrender.com/api/nomination/nomination-details/${id}/${type}`,
       {
         headers: {
           'Content-Type': 'application/json',
@@ -55,7 +55,7 @@ function Approvement() {
       reason: nomination.reason
     };
 
-    fetch('http://localhost:3010/api/recognition', {
+    fetch('https://employee-recognition-system.onrender.com/api/recognition', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',

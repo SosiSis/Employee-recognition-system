@@ -9,7 +9,7 @@ function RecognitionType() {
 
   const submit = (e) => {
     e.preventDefault();
-    fetch("http://localhost:3010/api/recognition_type", {
+    fetch("https://employee-recognition-system.onrender.com/api/recognition_type", {
       headers: {
         'Content-Type': 'application/json',
         'authToken': token,

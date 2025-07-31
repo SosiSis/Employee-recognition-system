@@ -13,7 +13,7 @@ function NominationSetting() {
     const fetchRecognitionType = async () => {
       const token = localStorage.getItem('authToken');
       try {
-        const response = await fetch('http://localhost:3010/api/recognition_type', {
+        const response = await fetch('https://employee-recognition-system.onrender.com/api/recognition_type', {
           headers: {
             'Content-Type': 'application/json',
             'authToken': token,
@@ -58,7 +58,7 @@ function NominationSetting() {
     };
 
     try {
-      const response = await fetch('http://localhost:3010/api/nomination_date/setdate', {
+      const response = await fetch('https://employee-recognition-system.onrender.com/api/nomination_date/setdate', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

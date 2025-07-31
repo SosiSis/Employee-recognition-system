@@ -18,7 +18,7 @@ function Login() {
                     
               }
     console.log(data)
-    fetch("http://localhost:3010/api/employee/login", {
+    fetch("https://employee-recognition-system.onrender.com/api/employee/login", {
       headers:{
         'Content-Type': 'application/json',
       },

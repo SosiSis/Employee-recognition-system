@@ -25,7 +25,7 @@ function Nomination() {
   const token = localStorage.getItem('authToken');
 
   useEffect(() => {
-    fetch("http://localhost:3010/api/employee/teammate", {
+    fetch("https://employee-recognition-system.onrender.com/api/employee/teammate", {
       headers: {
         'Content-Type': 'application/json',
         'authToken': token,
