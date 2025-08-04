@@ -3,20 +3,18 @@ const path = require("path");
 
 const uploadPath = path.join(__dirname, "..", "public");
 
-const storage = multer.diskStorage({
-  destination: function (req, file, cb) {
-    cb(null, path.join(uploadPath, "/"));
-  },
-  filename: function (req, file, cb) {
-    cb(null, Date.now() + path.extname(file.originalname));
-  },
-});
-const upload = multer({
-  storage: storage,
+const { CloudinaryStorage } = require('multer-storage-cloudinary');
+const cloudinary = require('./cloudinary');
 
-  limits: {
-    // fileSize: 1024 * 1024 * 5,
+const storage = new CloudinaryStorage({
+  cloudinary: cloudinary,
+  params: {
+    folder: 'employee-recognition/profile-pictures',
+    allowed_formats: ['jpg', 'jpeg', 'png'],
+    transformation: [{ width: 400, height: 400, crop: 'limit' }],
   },
 });
+
+const upload = multer({ storage: storage });
 
 module.exports = upload;

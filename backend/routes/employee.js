@@ -95,29 +95,27 @@ router.patch('/:id/password', auth, async (req, res) => {
 
 
 router.patch('/:id',auth,upload.single('profilePicture'),async (req,res)=>{
-
-  const{firstName,lastName} =req.body
-  
- 
- 
+  const { firstName, lastName } = req.body;
   let profilePicture;
-   if(req.file){
-        const profile= req.file;
-        console.log(profile)
-        const serverBaseURL = "https://employee-recognition-system.onrender.com";
-          profilePicture  = `${serverBaseURL}/public/${profile.filename}`;
-      }
-  const update={
-        firstName:firstName,
-        lastName:lastName,
-        profilePicture:profilePicture}
-  Employee.updateOne({_id:req.params.id},{ $set:update
-  }).then((object)=>{
-    console.log( object)
-    res.json(object)
- })
- 
-})
+  if (req.file && req.file.path) {
+    // Cloudinary multer-storage-cloudinary puts the url in req.file.path
+    profilePicture = req.file.path;
+  }
+  const update = {
+    firstName: firstName,
+    lastName: lastName,
+    ...(profilePicture && { profilePicture })
+  };
+  Employee.updateOne({ _id: req.params.id }, { $set: update })
+    .then((object) => {
+      console.log(object);
+      res.json(object);
+    })
+    .catch((err) => {
+      console.error(err);
+      res.status(500).json({ error: 'Failed to update employee profile' });
+    });
+});
 
 router.get('/admin/notifications', async (req, res) => {
   try {
