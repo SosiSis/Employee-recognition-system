@@ -6,10 +6,10 @@ function RecognitionType() {
   const [description, setDescription] = useState('');
   const [position, setPosition] = useState('');
   const token = localStorage.getItem('authToken');
-
+  const BASE_URL = process.env.BASE_URL;
   const submit = (e) => {
     e.preventDefault();
-    fetch("https://employee-recognition-system.onrender.com/api/recognition_type", {
+    fetch(`${BASE_URL}/api/recognition_type`, {
       headers: {
         'Content-Type': 'application/json',
         'authToken': token,

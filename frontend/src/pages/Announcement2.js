@@ -16,10 +16,11 @@ const contentStyle = {
 function Announcement2() {
   const [announcements, setAnnouncements] = useState([]);
   const token= localStorage.getItem('authToken')
+  const BASE_URL = process.env.BASE_URL;
   useEffect(() => {
     const fetchAnnouncements = async () => {
       try {
-        const response = await fetch('https://employee-recognition-system.onrender.com/api/report/all',{headers:{"authToken":token}}); // Adjust the URL if necessary
+        const response = await fetch(`${BASE_URL}/api/report/all`, { headers: { "authToken": token } }); // Adjust the URL if necessary
         const data = await response.json();
         setAnnouncements(data.employeesWithDetails);
       } catch (error) {

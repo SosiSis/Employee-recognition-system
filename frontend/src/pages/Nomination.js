@@ -11,7 +11,7 @@ function Nomination() {
   const [mapData, setMapData] = useState([]); // Initialize mapData as an empty array
   const { clickedIcon, handleIconClick } = useContext(IconContext);
   const navigate = useNavigate();
-
+  const BASE_URL = process.env.BASE_URL; // Ensure BASE_URL is defined correctly
   const container = document.getElementsByClassName('blur-container')[0];
   if (container) {
     if (clickedIcon) {
@@ -25,7 +25,7 @@ function Nomination() {
   const token = localStorage.getItem('authToken');
 
   useEffect(() => {
-    fetch("https://employee-recognition-system.onrender.com/api/employee/teammate", {
+    fetch(`${BASE_URL}/api/employee/teammate`, {
       headers: {
         'Content-Type': 'application/json',
         'authToken': token,

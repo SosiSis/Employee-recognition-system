@@ -22,7 +22,7 @@ function NominatorHeader() {
 
   const { clickedIcon, handleIconClick } = useContext(IconContext);
   const navigate = useNavigate();
-
+  const BASE_URL = process.env.BASE_URL  ||  "https://employee-recognition-system.onrender.com"
   const handleClick = () => {
     handleIconClick(!accountClick);
   };
@@ -48,7 +48,7 @@ function NominatorHeader() {
     const fetchUserData = async () => {
       try {
         const token= localStorage.getItem('authToken')
-        const response = await fetch(`https://employee-recognition-system.onrender.com/api/employee/me`,{headers:{'authToken':token}}); // Adjust the URL if necessary
+        const response = await fetch(`${BASE_URL}/api/employee/me`,{headers:{'authToken':token}}); // Adjust the URL if necessary
         const data = await response.json();
         setUserData(data[0]); // Assuming the response is an array with a single user object
       } catch (error) {
@@ -64,7 +64,7 @@ function NominatorHeader() {
     try {
       const id= localStorage.getItem('id')
       const token= localStorage.getItem('authToken')
-      const response = await fetch(`https://employee-recognition-system.onrender.com/api/employee/${id}/password`, {
+      const response = await fetch(`${BASE_URL}/api/employee/${id}/password`, {
         method: 'PATCH',
         headers: {
           'Content-Type': 'application/json',
@@ -97,7 +97,7 @@ function NominatorHeader() {
       }
       const id= localStorage.getItem('id')
       const token= localStorage.getItem('authToken')
-      const response = await fetch(`https://employee-recognition-system.onrender.com/api/employee/${id}`, {
+      const response = await fetch(`${BASE_URL}/api/employee/${id}`, {
         method: 'PATCH',
         headers:{'authToken':token},
         body: formData,

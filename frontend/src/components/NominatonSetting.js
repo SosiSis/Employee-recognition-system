@@ -8,12 +8,12 @@ function NominationSetting() {
   const [selectedEndDate, setSelectedEndDate] = useState(null);
   const [recognitionType, setRecognitionType] = useState([]);
   const [selectedRecognitionType, setSelectedRecognitionType] = useState('');
-
+  const BASE_URL = process.env.BASE_URL  ||  "https://employee-recognition-system.onrender.com";
   useEffect(() => {
     const fetchRecognitionType = async () => {
       const token = localStorage.getItem('authToken');
       try {
-        const response = await fetch('https://employee-recognition-system.onrender.com/api/recognition_type', {
+        const response = await fetch(`${BASE_URL}/api/recognition_type`, {
           headers: {
             'Content-Type': 'application/json',
             'authToken': token,
@@ -58,7 +58,7 @@ function NominationSetting() {
     };
 
     try {
-      const response = await fetch('https://employee-recognition-system.onrender.com/api/nomination_date/setdate', {
+      const response = await fetch(`${BASE_URL}/api/nomination_date/setdate`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

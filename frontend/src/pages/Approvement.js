@@ -13,12 +13,12 @@ function Approvement() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const token = localStorage.getItem('authToken');
-
+  const BASE_URL = process.env.BASE_URL;
   useEffect(() => {
     setLoading(true);
     setError(null);
     fetch(
-      `https://employee-recognition-system.onrender.com/api/nomination/nomination-details/${id}/${type}`,
+      `${BASE_URL}/api/nomination/nomination-details/${id}/${type}`,
       {
         headers: {
           'Content-Type': 'application/json',
@@ -55,7 +55,7 @@ function Approvement() {
       reason: nomination.reason
     };
 
-    fetch('https://employee-recognition-system.onrender.com/api/recognition', {
+    fetch(`${BASE_URL}/api/recognition`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',

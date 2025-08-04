@@ -4,11 +4,11 @@ import './RewardType.css'
 function RewardType() {
   const [rewardType, setRewardType] = useState('');
   const [description, setDescription] = useState('');
-
+  const BASE_URL = process.env.BASE_URL;
   const token = localStorage.getItem('authToken');
   const submit = (e) => {
     e.preventDefault();
-    fetch("https://employee-recognition-system.onrender.com/api/reward_type", {
+    fetch(`${BASE_URL}/api/reward_type`, {
       headers: {
         'Content-Type': 'application/json',
         'authToken': token,
