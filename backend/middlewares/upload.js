@@ -8,11 +8,9 @@ const cloudinary = require('./cloudinary');
 
 const storage = new CloudinaryStorage({
   cloudinary: cloudinary,
-  params: {
-    folder: 'employee-recognition/profile-pictures',
-    allowed_formats: ['jpg', 'jpeg', 'png'],
-    transformation: [{ width: 400, height: 400, crop: 'limit' }],
-  },
+  folder: 'employee-recognition/profile-pictures',
+  allowedFormats: ['jpg', 'jpeg', 'png'],
+  transformation: [{ width: 400, height: 400, crop: 'limit' }],
 });
 
 const upload = multer({ storage: storage });
