@@ -98,9 +98,16 @@ function UpdateInfo() {
                   alt='Selected'
                   className=''
                 />
+              ) : placeholderData.profilePicture ? (
+                <img
+                  src={placeholderData.profilePicture}
+                  alt='Profile'
+                  className=''
+                />
               ) : (
-                <p></p>
-              )}Profile Picture:
+                <p>No profile picture</p>
+              )}
+              Profile Picture:
             </label>
             </div>
               <label>Email:</label>

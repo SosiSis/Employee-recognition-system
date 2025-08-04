@@ -129,13 +129,20 @@ function AdminHeader() {
                     <img
                       src={URL.createObjectURL(photo)}
                       alt='Selected'
-                      className=''
+                      width={'100px'}
+                      height={'100px'}
+                    />
+                  ) : placeholderData.profilePicture ? (
+                    <img
+                      src={placeholderData.profilePicture}
+                      alt='Profile'
                       width={'100px'}
                       height={'100px'}
                     />
                   ) : (
-                    <p></p>
-                  )}Profile Picture:
+                    <p>No profile picture</p>
+                  )}
+                  Profile Picture:
                 </label>
               </div>
               <div>
