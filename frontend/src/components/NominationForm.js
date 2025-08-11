@@ -13,11 +13,11 @@ function NominationForm() {
   const [reason, setReason] = useState('');
   const [isAnonymous, setIsAnonymous] = useState(false);
   const token = localStorage.getItem('authToken');
-  const BASE_URL = process.env.BASE_URL  ||  "https://employee-recognition-system.onrender.com"
+  const REACT_APP_BASE_URL = process.env.REACT_APP_BASE_URL  
   useEffect(() => {
     const fetchRecognitionType = async () => {
       try {
-        const response = await fetch(`${BASE_URL}/api/recognition_type/active`, {
+        const response = await fetch(`${REACT_APP_BASE_URL}/api/recognition_type/active`, {
           headers: {
             'Content-Type': 'application/json',
             'authToken': token,
@@ -57,7 +57,7 @@ function NominationForm() {
     };
 
     try {
-      const response = await fetch(`${BASE_URL}/api/nomination`, {
+      const response = await fetch(`${REACT_APP_BASE_URL}/api/nomination`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

@@ -7,7 +7,7 @@ function Login() {
   const [email, setEmail]=useState('')
   const [password, setPassword]=useState('')
   const navigate=useNavigate()
-  const BASE_URL = process.env.BASE_URL  ||  "https://employee-recognition-system.onrender.com"
+  const REACT_APP_BASE_URL = process.env.REACT_APP_BASE_URL  
   const login = (e) => {
     e.preventDefault();
  
@@ -19,7 +19,7 @@ function Login() {
                     
               }
     console.log(data)
-    fetch(`${BASE_URL}/api/employee/login`, {
+    fetch(`${REACT_APP_BASE_URL}/api/employee/login`, {
       headers:{
         'Content-Type': 'application/json',
       },

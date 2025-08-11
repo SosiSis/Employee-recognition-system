@@ -13,12 +13,12 @@ function Approvement() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const token = localStorage.getItem('authToken');
-  const BASE_URL = process.env.BASE_URL;
+  const REACT_APP_BASE_URL = process.env.REACT_APP_BASE_URL;
   useEffect(() => {
     setLoading(true);
     setError(null);
     fetch(
-      `${BASE_URL}/api/nomination/nomination-details/${id}/${type}`,
+      `${REACT_APP_BASE_URL}/api/nomination/nomination-details/${id}/${type}`,
       {
         headers: {
           'Content-Type': 'application/json',
@@ -55,7 +55,7 @@ function Approvement() {
       reason: nomination.reason
     };
 
-    fetch(`${BASE_URL}/api/recognition`, {
+    fetch(`${REACT_APP_BASE_URL}/api/recognition`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',

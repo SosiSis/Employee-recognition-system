@@ -8,11 +8,11 @@ function RewardSetting() {
   const [selectedRewardType, setSelectedRewardType] = useState('');
   const [amount, setAmount] = useState('');
   const token = localStorage.getItem('authToken');
-  const BASE_URL = process.env.BASE_URL;
+  const REACT_APP_BASE_URL = process.env.REACT_APP_BASE_URL;
   useEffect(() => {
     const fetchRecognitionType = async () => {
       try {
-        const response = await fetch(`${BASE_URL}/api/recognition_type`, {
+        const response = await fetch(`${REACT_APP_BASE_URL}/api/recognition_type`, {
           headers: {
             'Content-Type': 'application/json',
             'authToken': token,
@@ -35,7 +35,7 @@ function RewardSetting() {
 
     const fetchRewardType = async () => {
       try {
-        const response = await fetch(`${BASE_URL}/api/reward_type`, {
+        const response = await fetch(`${REACT_APP_BASE_URL}/api/reward_type`, {
           headers: {
             'Content-Type': 'application/json',
             'authToken': token,
@@ -64,7 +64,7 @@ function RewardSetting() {
     event.preventDefault();
 
     try {
-      const response = await fetch(`${BASE_URL}/api/reward`, {
+      const response = await fetch(`${REACT_APP_BASE_URL}/api/reward`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

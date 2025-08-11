@@ -40,7 +40,7 @@ function Approver() {
   const [data, setData] = useState([]);
   const token=localStorage.getItem('authToken')
   const navigate = useNavigate();
-  const BASE_URL = process.env.BASE_URL  ||  "https://employee-recognition-system.onrender.com"
+  const REACT_APP_BASE_URL = process.env.REACT_APP_BASE_URL  
   const approvement = (first, last, email, id,type) => {
     navigate('/approvement', {
       state: {
@@ -53,7 +53,7 @@ function Approver() {
     });
   };
   useEffect(() => {
-    fetch(`${BASE_URL}/api/nomination/nomination-count`, {headers: {
+    fetch(`${REACT_APP_BASE_URL}/api/nomination/nomination-count`, {headers: {
       'Content-Type': 'application/json',
       'authToken': token,
     },

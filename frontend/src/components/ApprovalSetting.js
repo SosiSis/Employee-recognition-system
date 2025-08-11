@@ -8,12 +8,12 @@ function ApprovalSetting() {
   const [selectedEndDate, setSelectedEndDate] = useState(null);
   const [recognitionType, setRecognitionType] = useState([]);
   const [selectedRecognitionType, setSelectedRecognitionType] = useState('');
-  const BASE_URL = process.env.BASE_URL  ||  "https://employee-recognition-system.onrender.com";
+  const REACT_APP_BASE_URL = process.env.REACT_APP_BASE_URL  ;
   useEffect(() => {
     const fetchRecognitionType = async () => {
       const token = localStorage.getItem('authToken');
       try {
-        const response = await fetch(`${BASE_URL}/api/recognition_type`, {
+        const response = await fetch(`${REACT_APP_BASE_URL}/api/recognition_type`, {
           headers: {
             'Content-Type': 'application/json',
             'authToken': token,
@@ -58,7 +58,7 @@ function ApprovalSetting() {
     };
 
     try {
-      const response = await fetch(`${BASE_URL}/api/approval_date/setdate`, {
+      const response = await fetch(`${REACT_APP_BASE_URL}/api/approval_date/setdate`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
