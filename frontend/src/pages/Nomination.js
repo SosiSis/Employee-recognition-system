@@ -50,16 +50,9 @@ function Nomination() {
     <div>
       <NominatorHeader />
       <div>
-        <div className="flex justify-between">
+        <div className="flex justify-start">
           <h1 className="text-2xl font-bold">Nominate your team mate</h1>
-          <div style={{ marginRight: '20px', marginTop: '20px' }} className="flex justify-center items-center">
-            <input style={{ marginTop: '20px', height: '30px',padding:'3px' }} placeholder="search by name" className="header__input" />
-            <div className="flex justify-center items-center">
-              <svg width="25px" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20" className="search__icon">
-                <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z" />
-              </svg>
-            </div>
-          </div>
+          
         </div>
         <div className="center">
           <div className="grid-3">

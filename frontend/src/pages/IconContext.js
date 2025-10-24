@@ -5,8 +5,10 @@ const IconContext = createContext();
 function IconProvider({ children }) {
   const [clickedIcon, setClickedIcon] = useState(false);
 
-  const handleIconClick = () => {
-    setClickedIcon(true);
+  // Accept an optional boolean to explicitly set state, otherwise toggle
+  const handleIconClick = (value) => {
+    if (typeof value === 'boolean') setClickedIcon(value);
+    else setClickedIcon((prev) => !prev);
   };
 
   return (

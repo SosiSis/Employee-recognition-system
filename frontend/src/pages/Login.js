@@ -65,30 +65,53 @@ function Login() {
 
 
   return (
-    <div className='login__container center'>
-       
-       
-        <div className='justify-end login__image'><img className=""  src={illustration}/></div>
-        <div className='login__form'>
+    <div className='login__container'>
+      <div className='login__image'>
+        <img src={illustration} alt="Employee Recognition System" />
+      </div>
+      
+      <div className='login__form'>
+        <div className='login__form__wrapper'>
+          <form onSubmit={login}>
+            <h3>Welcome Back</h3>
+            <p className='login__subtitle'>Sign in to your Employee Recognition System account</p>
+            
+            <div className='form__group'>
+              <label htmlFor="email">Email Address</label>
+              <input 
+                type='email' 
+                id="email"
+                placeholder="Enter your email address"
+                value={email} 
+                onChange={(e) => setEmail(e.target.value)}
+                required
+              />
+              <span className='input-icon'></span>
+            </div>
+            
+            <div className='form__group'>
+              <label htmlFor="password">Password</label>
+              <input 
+                type='password' 
+                id="password"
+                placeholder="Enter your password"
+                value={password} 
+                onChange={(e) => setPassword(e.target.value)} 
+                required
+              />
+              <span className='input-icon'></span>
+            </div>
+            
+            <div className='login__button'>
+              <button type="submit">Sign In</button>
+            </div>
+          </form>
           
-          <div className=''>
-                <form onSubmit={login} className='form' >
-                     <h3 className='text-xl font-bold'>Login </h3>
-                      
-                      <label>Email</label>
-                      <input type='text'  value={email} onChange={(e=>setEmail(e.target.value))}/>
-                      <label>Password</label>
-                      <input type='password'  value={password} onChange={(e=>setPassword(e.target.value))} required/>
-                      <div className='button'><button >Submit</button></div>
-                  </form>
-
+          <div className='login__footer'>
+            <p>Secure access to your recognition platform</p>
           </div>
-           
         </div>
-       
-       
-
-
+      </div>
     </div>
   )
 }

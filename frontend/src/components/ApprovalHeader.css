@@ -1,0 +1,50 @@
+/* Basic layout for header */
+@import './NominatorHeader.css';
+
+.header__container{
+	display:flex;
+	align-items:center;
+	justify-content:space-between;
+	padding: 12px 20px;
+	background: #000; /* changed to black as requested */
+	border-bottom: 1px solid rgba(255,255,255,0.06);
+}
+.header__components{display:flex;gap:18px;align-items:center}
+.header__link{color:#fff;text-decoration:none;font-weight:600}
+.logo{height:42px}
+
+/* profile avatar */
+.profile-wrap{display:flex;align-items:center;gap:10px}
+.profile-avatar{width:40px;height:40px;border-radius:50%;object-fit:cover;cursor:pointer;border:2px solid rgba(0,0,0,0.06)}
+.profile-avatar.placeholder{display:flex;align-items:center;justify-content:center;background:rgba(255,255,255,0.06);color:#fff;font-weight:700}
+.profile-wrap{display:flex;align-items:center;gap:12px}
+.profile-avatar{width:44px;height:44px;border-radius:50%;object-fit:cover;cursor:pointer;border:2px solid rgba(255,255,255,0.12);box-shadow:0 4px 12px rgba(0,0,0,0.4);transition:transform .15s ease, box-shadow .15s ease}
+.profile-avatar:hover{transform:translateY(-2px);box-shadow:0 8px 20px rgba(0,0,0,0.45), 0 0 0 4px rgba(255,255,255,0.04)}
+.profile-avatar.placeholder{display:flex;align-items:center;justify-content:center;background:linear-gradient(135deg,#19a44a,#0a7a3f);color:#fff;font-weight:700;font-size:16px}
+
+/* ensure the image itself contrasts on dark bg */
+.profile-avatar img{display:block;width:100%;height:100%;border-radius:50%;object-fit:cover;filter:brightness(1.05) contrast(1.02)}
+
+/* overlay and modal */
+.page-overlay{position:fixed;inset:0;background:rgba(255,255,255,0.25);backdrop-filter:blur(6px);z-index:800}
+.profile-modal{position:fixed;top:50%;left:50%;transform:translate(-50%,-50%);z-index:900;background:#fff;border-radius:12px;padding:18px;width:680px;max-width:96%;box-shadow:0 20px 40px rgba(0,0,0,0.12)}
+.profile-modal__header{display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid rgba(0,0,0,0.04);padding-bottom:8px}
+.profile-modal__close{background:transparent;border:none;font-size:20px;cursor:pointer}
+.profile-modal__body{display:flex;gap:8px;padding-top:12px;align-items:center}
+.profile-preview{min-width:100px;display:flex;flex-direction:column;align-items:center;gap:6px}
+.profile-preview img{width:88px;height:88px;border-radius:10px;object-fit:cover}
+.avatar-large{width:100px;height:100px;border-radius:12px;background:#eaf6ee;display:flex;align-items:center;justify-content:center;font-weight:700;color:var(--primary-700);font-size:28px}
+.profile-fields{flex:1;display:flex;flex-direction:column;gap:8px}
+.profile-fields input{padding:8px 10px;border:1px solid rgba(0,0,0,0.08);border-radius:8px}
+.profile-modal__actions{display:flex;justify-content:space-between;gap:12px;margin-top:14px}
+
+/* small helpers reuse buttons */
+.btn-submit{background:linear-gradient(135deg,var(--primary-600),var(--primary-700));color:#fff;padding:10px 18px;border-radius:999px;border:none}
+.btn-reset{background:var(--neutral-50);color:var(--neutral-800);padding:10px 18px;border-radius:999px;border:1px solid rgba(25,164,74,0.08)}
+
+/* modal tab styles (shared) */
+.modal-tabs{list-style:none;padding:8px 12px;margin:0;display:flex;gap:8px}
+.modal-tab{padding:8px 12px;border-radius:10px;background:transparent;color:var(--neutral-800);border:1px solid rgba(0,0,0,0.06);cursor:pointer}
+.modal-tab.active{background:linear-gradient(135deg,var(--primary-600),var(--primary-700));color:white;border-color:transparent}
+.modal-tab:focus{outline:none;box-shadow:0 6px 18px rgba(25,164,74,0.12)}
+

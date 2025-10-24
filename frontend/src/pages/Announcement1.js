@@ -20,8 +20,10 @@ function Announcement1() {
     const fetchAnnouncements = async () => {
       try {
         const response = await fetch(`${REACT_APP_BASE_URL}/api/report/all`, { headers: { "authToken": token } }); // Adjust the URL if necessary
-        const data = await response.json();
-        setAnnouncements(data.employeesWithDetails);
+  const data = await response.json();
+  // Normalize the response to always be an array to avoid runtime .map errors
+  const items = Array.isArray(data?.employeesWithDetails) ? data.employeesWithDetails : [];
+  setAnnouncements(items);
       } catch (error) {
         console.error("Error fetching announcements:", error);
       }
@@ -40,7 +42,7 @@ function Announcement1() {
         </svg>
       </div>
       <Carousel autoplay>
-        {announcements.map((announcement, index) => (
+        {(announcements || []).map((announcement, index) => (
           <div key={index}>
             <h3 style={contentStyle}>
               <Announcement fullName={announcement.name} RecognitionType={Object.keys(announcement.recognitions)[0]} />

@@ -1,48 +1,272 @@
-.login__container{
-   display: flex;
-   height: 100vh;
-  
+.login__container {
+  display: flex;
+  min-height: 100vh;
+  background: linear-gradient(135deg, #f0fdf4 0%, #ecfdf5 50%, #f0f9ff 100%);
+  position: relative;
+  overflow: hidden;
+}
 
+.login__container::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: radial-gradient(circle at 20% 80%, rgba(34, 197, 94, 0.1) 0%, transparent 50%),
+              radial-gradient(circle at 80% 20%, rgba(59, 130, 246, 0.1) 0%, transparent 50%);
+  pointer-events: none;
+  z-index: 1;
+}
 
+.login__image {
+  flex: 1 1 45%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 2rem;
+  position: relative;
+  z-index: 2;
 }
-.login__image{
-    flex: 1 1 40%;
-    display: flex;
-    justify-content: end;
-}
-.login__image img{
-    height:60vh;
-    width: 35vw;
-    
 
+.login__image img {
+  max-width: 90%;
+  max-height: 70vh;
+  object-fit: contain;
+  filter: drop-shadow(0 20px 40px rgba(0, 0, 0, 0.1));
+  animation: float 6s ease-in-out infinite;
 }
-img{
-    max-width: 100%;
-    max-height: 100%;
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-20px); }
 }
-.login__form{
-    flex: 1 1 50%;
-   
-    display: flex;
-    justify-content: center;
-    align-items: center;
+
+.login__form {
+  flex: 1 1 55%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 2rem;
+  position: relative;
+  z-index: 2;
 }
-.login__form form{
-    border: none;
-    box-shadow: none;
-    text-align: start;
-    width: 30vw;
-    height: 50%;
-    display: flex;
+
+.login__form__wrapper {
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 1.5rem;
+  padding: 3rem 2.5rem;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25),
+              0 0 0 1px rgba(255, 255, 255, 0.1) inset;
+  width: 100%;
+  max-width: 450px;
+  position: relative;
+  animation: slideInUp 0.8s ease-out;
+}
+
+@keyframes slideInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.login__form__wrapper::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.1) 0%, transparent 50%);
+  border-radius: inherit;
+  pointer-events: none;
+}
+
+.login__form form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  position: relative;
+  z-index: 1;
+}
+
+.login__form h3 {
+  text-align: center;
+  font-family: "Poppins", sans-serif;
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+  background: linear-gradient(135deg, var(--primary-600), var(--primary-700));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.login__subtitle {
+  text-align: center;
+  color: var(--neutral-600);
+  font-size: 0.875rem;
+  margin-bottom: 1rem;
+  font-weight: 400;
+}
+
+.form__group {
+  position: relative;
+}
+
+.form__group label {
+  display: block;
+  font-weight: 500;
+  color: var(--neutral-700);
+  margin-bottom: 0.5rem;
+  font-size: 0.875rem;
+}
+
+.form__group input {
+  width: 100%;
+  padding: 1rem 1rem 1rem 2.75rem;
+  font-size: 0.875rem;
+  border: 1.5px solid var(--neutral-300);
+  border-radius: 0.875rem;
+  background-color: rgba(255, 255, 255, 0.8);
+  transition: all 0.3s ease;
+  font-family: inherit;
+  position: relative;
+}
+
+.form__group input:focus {
+  outline: none;
+  border-color: var(--primary-500);
+  box-shadow: 0 0 0 4px rgba(34, 197, 94, 0.1);
+  background-color: white;
+  transform: translateY(-2px);
+}
+
+.form__group .input-icon {
+  position: absolute;
+  left: 1rem;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--neutral-400);
+  font-size: 1.25rem;
+  transition: color 0.3s ease;
+  pointer-events: none;
+  margin-top: 1.5rem;
+}
+
+.form__group input:focus + .input-icon {
+  color: var(--primary-500);
+}
+
+.login__button {
+  margin-top: 1.75rem;
+  display: flex;
+  justify-content: center; /* center the button horizontally inside the card */
+}
+
+.login__button button {
+  width: 80%; /* make the button narrower than the card and centered */
+  max-width: 360px; /* cap maximum width so the pill has nice rounded ends */
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 56px;
+  padding: 0 1.5rem;
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: white;
+  background: linear-gradient(135deg, var(--primary-600) 0%, var(--primary-700) 100%);
+  border: none;
+  border-radius: 999px;
+  cursor: pointer;
+  transition: all 0.22s ease;
+  position: relative;
+  overflow: hidden;
+  font-family: "Poppins", sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 0.6px;
+}
+
+.login__button button::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transition: left 0.5s ease;
+}
+
+.login__button button:hover::before {
+  left: 100%;
+}
+
+.login__button button:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 14px 34px rgba(34, 197, 94, 0.28);
+}
+
+.login__button button:active {
+  transform: translateY(0);
+}
+
+.login__footer {
+  text-align: center;
+  margin-top: 1.5rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--neutral-200);
+}
+
+.login__footer p {
+  color: var(--neutral-600);
+  font-size: 0.875rem;
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+  .login__container {
     flex-direction: column;
-}
-.login__form form h3{
-    text-align: center;
-    font-family: "Poppins";
-    margin: 10px;
+  }
   
-    
+  .login__image {
+    flex: 0 0 40vh;
+    padding: 1rem;
+  }
+  
+  .login__image img {
+    max-height: 30vh;
+  }
+  
+  .login__form {
+    flex: 1;
+    padding: 1rem;
+  }
+  
+  .login__form__wrapper {
+    padding: 2rem 1.5rem;
+    max-width: 400px;
+  }
 }
-form label{
-    padding: 10px;
+
+@media (max-width: 640px) {
+  .login__form__wrapper {
+    padding: 1.5rem;
+    border-radius: 1rem;
+  }
+  
+  .login__form h3 {
+    font-size: 1.75rem;
+  }
+  .login__button button {
+    width: 100%; /* full width on small screens */
+    max-width: none;
+  }
 }

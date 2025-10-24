@@ -142,46 +142,59 @@ function NominatorHeader() {
 
         <div className='flex'>
           <div className='center' style={{ marginRight: '20px' }} onClick={handleClick}>
-            <svg width='31px' height='31px' style={{ color: 'white' }} onClick={toggleAccount} xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor">
-              <path strokeLinecap="round" strokeLinejoin="round" d="M17.982 18.725A7.488 7.488 0 0 0 12 15.75a7.488 7.488 0 0 0-5.982 2.975m11.963 0a9 9 0 1 0-11.963 0m11.963 0A8.966 8.966 0 0 1 12 21a8.966 8.966 0 0 1-5.982-2.275M15 9.75a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" />
-            </svg>
-          </div>
+              <div className="profile-wrap" onClick={toggleAccount}>
+                {userData && userData.profilePicture ? (
+                  <img src={userData.profilePicture} alt="avatar" className="profile-avatar" />
+                ) : (
+                  <div className="profile-avatar placeholder">{userData && userData.firstName ? userData.firstName.charAt(0) : 'U'}</div>
+                )}
+              </div>
+            </div>
 
-          <div className='center'>
-            <svg className='header__notification' width='31px' height='31px' xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor">
-              <path strokeLinecap="round" strokeLinejoin="round" d="M14.857 17.082a23.848 23.848 0 0 0 5.454-1.31A8.967 8.967 0 0 1 18 9.75V9A6 6 0 0 0 6 9v.75a8.967 8.967 0 0 1-2.312 6.022c1.733.64 3.56 1.085 5.455 1.31m5.714 0a24.255 24.255 0 0 1-5.714 0m5.714 0a3 3 0 1 1-5.714 0M3.124 7.5A8.969 8.969 0 0 1 5.292 3m13.416 0a8.969 8.969 0 0 1 2.168 4.5" />
-            </svg>
-          </div>
+         
 
           <span onClick={logout} className=''>Log out</span>
         </div>
       </div>
 
       {accountClick === true && (
-        <div
-          style={{
-            border: "1px solid #c3cbc6",
-            boxShadow: "0 0 5px rgba(25, 164, 74, 0.15)",
-            zIndex: "900",
-            position: 'absolute',
-            top: '20%',
-            left: '30%',
-            width: '500px',
-            borderRadius: "4px",
-            color: 'black',
-            backgroundColor: 'white'
-          }}
-        >
+        <>
+          {/* overlay - clicking it closes the modal */}
+          <div className="page-overlay" onClick={() => { setAccountClick(false); handleIconClick(false); }} />
+
+          <div className="profile-modal" role="dialog" aria-modal="true">
+            <div className="profile-modal__header">
+              <h3>My Profile</h3>
+              <button
+                className="profile-modal__close"
+                aria-label="Close profile modal"
+                onClick={() => { setAccountClick(false); handleIconClick(false); }}
+              >
+                ✕
+              </button>
+            </div>
           <nav>
-            <ul className='flex '>
-              <li onClick={handlePersonalInformation} style={{ margin: '10px', backgroundColor: 'white', color: 'black', border: "1px solid #c3cbc6", borderRadius: "10px", padding: '8px' }}>Edit your personal Information</li>
-              <li onClick={handleManagePassword} style={{ margin: '10px', border: "1px solid #c3cbc6", borderRadius: "10px", backgroundColor: 'white', color: 'black', padding: '8px' }}>Manage password</li>
+            <ul className='flex modal-tabs'>
+              <li
+                onClick={handlePersonalInformation}
+                className={"modal-tab " + (personalInformation ? 'active' : '')}
+                aria-selected={personalInformation}
+              >
+                Edit your personal Information
+              </li>
+              <li
+                onClick={handleManagePassword}
+                className={"modal-tab " + (!personalInformation ? 'active' : '')}
+                aria-selected={!personalInformation}
+              >
+                Manage password
+              </li>
             </ul>
           </nav>
-          {personalInformation === true ? (
+            {personalInformation === true ? (
             <form style={{ border: 'none' }} className='flex flex-col' onSubmit={handleSubmit}>
-              <div className='flex justify-center items-center'>
-                <div>
+              <div className="profile-modal__body">
+                <div className="profile-preview profile-preview--center">
                   <label htmlFor='file-upload' className=''>
                     <input
                       id='file-upload'
@@ -194,40 +207,46 @@ function NominatorHeader() {
                       <img
                         src={URL.createObjectURL(photo)}
                         alt='Selected'
-                        width={'100px'}
-                        height={'100px'}
+                        width={'120px'}
+                        height={'120px'}
                       />
                     ) : userData.profilePicture ? (
                       <img
                         src={userData.profilePicture}
                         alt='Profile'
-                        width={'100px'}
-                        height={'100px'}
+                        width={'120px'}
+                        height={'120px'}
                       />
                     ) : (
-                      <p>No profile picture</p>
+                      <div className="avatar-large">{userData && userData.firstName ? userData.firstName.charAt(0) : 'U'}</div>
                     )}
-                    Profile Picture:
+                    <div className="profile-caption">Profile Picture:</div>
                   </label>
                 </div>
-                <div>
+
+                <div className="profile-fields form-fields">
+                  <label>First Name:</label>
+                  <input
+                    type="text"
+                    value={userData.firstName}
+                    onChange={(e) => setUserData({ ...userData, firstName: e.target.value })}
+                  />
+
+                  <label>Last Name:</label>
+                  <input
+                    type="text"
+                    value={userData.lastName}
+                    onChange={(e) => setUserData({ ...userData, lastName: e.target.value })}
+                  />
+
                   <label>Email:</label>
                   <input type="text" value={userData.email} readOnly />
+
+                  <div className="profile-modal__actions">
+                    <button type="submit" className="btn-submit">Submit</button>
+                  </div>
                 </div>
               </div>
-              <label>First Name:</label>
-              <input
-                type="text"
-                value={userData.firstName}
-                onChange={(e) => setUserData({ ...userData, firstName: e.target.value })}
-              />
-              <label>Last Name:</label>
-              <input
-                type="text"
-                value={userData.lastName}
-                onChange={(e) => setUserData({ ...userData, lastName: e.target.value })}
-              />
-              <button type="submit">Submit</button>
             </form>
           ) : (
             <form style={{ border: 'none' }} className='flex flex-col'>
@@ -247,6 +266,7 @@ function NominatorHeader() {
             </form>
           )}
         </div>
+          </>
       )}
     </>
   );

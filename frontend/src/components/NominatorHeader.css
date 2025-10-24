@@ -74,3 +74,73 @@
 .color{
     color: white;
 }
+
+/* Full page overlay used when modal/account panel is open */
+.page-overlay {
+    position: fixed;
+    inset: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.25);
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+    z-index: 850;
+}
+
+/* profile avatar styles (shared) */
+.profile-wrap{display:flex;align-items:center;gap:12px}
+.profile-avatar{width:44px;height:44px;border-radius:50%;object-fit:cover;cursor:pointer;border:2px solid rgba(255,255,255,0.12);box-shadow:0 4px 12px rgba(0,0,0,0.4);transition:transform .15s ease, box-shadow .15s ease}
+.profile-avatar:hover{transform:translateY(-2px);box-shadow:0 8px 20px rgba(0,0,0,0.45), 0 0 0 4px rgba(255,255,255,0.04)}
+.profile-avatar.placeholder{display:flex;align-items:center;justify-content:center;background:linear-gradient(135deg,#19a44a,#0a7a3f);color:#fff;font-weight:700;font-size:16px}
+.profile-avatar img{display:block;width:100%;height:100%;border-radius:50%;object-fit:cover;filter:brightness(1.05) contrast(1.02)}
+
+/* modal tab styles */
+.modal-tabs{list-style:none;padding:8px 12px;margin:0;display:flex;gap:8px}
+.modal-tab{padding:8px 12px;border-radius:10px;background:transparent;color:var(--neutral-800);border:1px solid rgba(0,0,0,0.06);cursor:pointer}
+.modal-tab.active{background:linear-gradient(135deg,var(--primary-600),var(--primary-700));color:white;border-color:transparent}
+.modal-tab:focus{outline:none;box-shadow:0 6px 18px rgba(25,164,74,0.12)}
+
+/* row inside profile modal that contains avatar and the profile fields */
+.profile-row{display:flex;gap:24px;align-items:center;justify-content:center}
+
+.profile-preview{min-width:84px;display:flex;flex-direction:column;align-items:center;gap:8px}
+.profile-fields{flex:1;min-width:220px}
+
+/* modal container (shared across headers) */
+.profile-modal{
+    position:fixed;
+    top:50%;
+    left:50%;
+    transform:translate(-50%,-50%);
+    width:680px;
+    max-width:96%;
+    background:white;
+    color:#0b0b0b;
+    border-radius:8px;
+    box-shadow:0 10px 30px rgba(0,0,0,0.18);
+    z-index:900;
+    max-height:85vh;
+    overflow-y:auto;
+}
+
+.profile-modal__header{display:flex;justify-content:space-between;align-items:center;position:static;padding:10px 12px;border-bottom:1px solid #eee}
+.profile-modal__header h3{margin:0;font-size:26px;color:#0b6b3a}
+.profile-modal__close{position:absolute;right:18px;top:8px;background:#f6fffb;border:1px solid rgba(11,107,58,0.08);cursor:pointer;font-size:16px;color:#0b6b3a;font-weight:700;padding:6px 8px;border-radius:8px;box-shadow:0 6px 18px rgba(25,164,74,0.06);line-height:1}
+.profile-modal__close:focus{outline:none}
+.profile-modal__close:focus{outline:none}
+
+.profile-modal .profile-row{padding:18px}
+.profile-modal__actions{display:flex;gap:12px;justify-content:flex-end;padding:16px;border-top:1px solid #f0f0f0}
+
+/* ensure inputs inside modal take full width */
+.profile-modal input[type="text"], .profile-modal input[type="password"], .profile-modal input[type="email"]{width:100%;box-sizing:border-box}
+
+/* body layout when avatar is centered and fields stack vertically */
+.profile-modal__body{display:flex;flex-direction:column;align-items:center;gap:12px}
+.profile-preview--center{display:flex;flex-direction:column;align-items:center;justify-content:center;padding-top:12px}
+.profile-preview--center img{width:120px;height:120px;border-radius:50%;object-fit:cover}
+.avatar-large{width:120px;height:120px;border-radius:50%;display:flex;align-items:center;justify-content:center;background:linear-gradient(135deg,#e9ecef,#d9d9d9);color:#333;font-weight:700;font-size:36px}
+.profile-caption{margin-top:8px;color:#1b1b1b}
+.form-fields{width:92%;display:flex;flex-direction:column;gap:12px;padding-bottom:12px}
+.form-fields label{font-weight:600}
+.form-fields input{padding:12px;border-radius:12px;border:1px solid rgba(10,60,90,0.12)}
