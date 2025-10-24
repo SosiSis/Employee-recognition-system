@@ -6,6 +6,7 @@ import { useNavigate } from 'react-router'
 function Login() {
   const [email, setEmail]=useState('')
   const [password, setPassword]=useState('')
+  const [showPassword, setShowPassword] = useState(false)
   const navigate=useNavigate()
   const REACT_APP_BASE_URL = process.env.REACT_APP_BASE_URL  
   const login = (e) => {
@@ -91,15 +92,35 @@ function Login() {
             
             <div className='form__group'>
               <label htmlFor="password">Password</label>
-              <input 
-                type='password' 
-                id="password"
-                placeholder="Enter your password"
-                value={password} 
-                onChange={(e) => setPassword(e.target.value)} 
-                required
-              />
-              <span className='input-icon'></span>
+              <div className='form__group password'>
+                <input 
+                  type={showPassword ? 'text' : 'password'} 
+                  id="password"
+                  placeholder="Enter your password"
+                  value={password} 
+                  onChange={(e) => setPassword(e.target.value)} 
+                  required
+                />
+                <button
+                  type="button"
+                  aria-label={showPassword ? 'Hide password' : 'Show password'}
+                  className="password-toggle"
+                  onClick={() => setShowPassword(s => !s)}
+                >
+                  {showPassword ? (
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <path d="M3 3L21 21" stroke="#0b6b3a" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                      <path d="M10.58 10.58a3 3 0 0 0 4.24 4.24" stroke="#0b6b3a" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                      <path d="M2.88 12.5C4.86 7.76 9.17 5 12 5c1.24 0 2.42.35 3.44.95" stroke="#0b6b3a" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                    </svg>
+                  ) : (
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <path d="M1 12s4-7 11-7 11 7 11 7-4 7-11 7S1 12 1 12z" stroke="#0b6b3a" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+                      <circle cx="12" cy="12" r="3" stroke="#0b6b3a" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+                    </svg>
+                  )}
+                </button>
+              </div>
             </div>
             
             <div className='login__button'>
