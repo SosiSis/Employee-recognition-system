@@ -47,19 +47,19 @@ function Login() {
           localStorage.setItem("id",data.id)
           localStorage.setItem("firstname",data.firstname)
                   console.log(data.token);
-                  if(localStorage.getItem('position')=='Employee'){
+                  if(localStorage.getItem('position')==='Employee'){
                     navigate('/nomination')
 
-                  }else if(localStorage.getItem('position')=='Manager') {
+                  }else if(localStorage.getItem('position')==='Manager') {
                     navigate('/approver')
 
-                  }else if(localStorage.getItem('position')=='Admin'){
+                  }else if(localStorage.getItem('position')==='Admin'){
                     navigate('/admin/setting1')
 
                   }
                  
        } )
-  }}) .catch ((error)=>{
+  }}).catch((error)=>{
     alert(error.message)
   }) 
 }

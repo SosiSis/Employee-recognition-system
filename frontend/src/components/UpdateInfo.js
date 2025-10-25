@@ -8,21 +8,16 @@ function UpdateInfo() {
     const [newPassword, setNewPassword] = useState('');
     const [photo, setPhoto] = useState(null);
   
-    const { clickedIcon, handleIconClick } = useContext(IconContext);
+    const { handleIconClick } = useContext(IconContext);
   
     const handleClick = () => {
-      if(accountClick==false){
+      if(accountClick===false){
         handleIconClick(true);
       }else{
         handleIconClick(false);
       }
      
     }
-  
-    const toggleAccount = () => {
-      setAccountClick(!accountClick);
-     
-    };
   
     const handlePersonalInformation = () => {
       setPersonalInformation(true);

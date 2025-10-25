@@ -1,6 +1,6 @@
 import React, { useContext, useState } from 'react';
 import './NominatorHeader.css';
-import { Link, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import logo from '../Assets/logo.png';
 import { IconContext } from '../pages/IconContext';
 
@@ -13,7 +13,7 @@ function AdminHeader() {
   const [photo, setPhoto] = useState(null);
   const [imageError, setImageError] = useState(false);
 
-  const { clickedIcon, handleIconClick } = useContext(IconContext);
+  const { handleIconClick } = useContext(IconContext);
 
   const handleClick = () => {
     if(accountClick === false) {

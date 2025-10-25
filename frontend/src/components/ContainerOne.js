@@ -12,7 +12,7 @@ function ContainerOne({name,nominations,recognition}) {
   return (
     <div className='container_custum'>
         <div className='left-container-one center'>
-            <div className='top-container'><img src={teamwork}/></div>
+            <div className='top-container'>            <img src={teamwork} alt="Illustration"/></div>
             <div className='bottom-container'></div>
         </div>
         <div className='right-container'>
