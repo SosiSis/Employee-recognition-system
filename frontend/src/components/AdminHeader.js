@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext, useState, useEffect } from 'react';
 import './NominatorHeader.css';
 import { useNavigate } from 'react-router-dom';
 import logo from '../Assets/logo.png';
@@ -12,8 +12,18 @@ function AdminHeader() {
   const [newPassword, setNewPassword] = useState('');
   const [photo, setPhoto] = useState(null);
   const [imageError, setImageError] = useState(false);
+  const [userData, setUserData] = useState({
+    firstName: '',
+    lastName: '',
+    profilePicture: '',
+    email: '',
+    password: '',
+    position: '',
+    department: '',
+  });
 
   const { handleIconClick } = useContext(IconContext);
+  const REACT_APP_BASE_URL = process.env.REACT_APP_BASE_URL;
 
   const handleClick = () => {
     if(accountClick === false) {
@@ -40,25 +50,75 @@ function AdminHeader() {
     setPhoto(file);
   };
 
-  // Mock data from database
-  const placeholderData = {
-    firstName: 'Admin',
-    lastName: 'admin',
-    profilePicture: 'https://example.com/profile.jpg',
-    email: 'admin@example.com',
-    password: '12344',
-    position: 'Manager',
-    department: 'Sales',
+  useEffect(() => {
+    const fetchUserData = async () => {
+      try {
+        const token = localStorage.getItem('authToken');
+        const response = await fetch(`${REACT_APP_BASE_URL}/api/employee/me`, {
+          headers: { 'authToken': token }
+        });
+        const data = await response.json();
+        setUserData(data[0]); // Assuming the response is an array with a single user object
+      } catch (error) {
+        console.error("Error fetching user data:", error);
+      }
+    };
+
+    fetchUserData();
+  }, [REACT_APP_BASE_URL]);
+
+  const handleUpdatePassword = async (e) => {
+    e.preventDefault();
+    try {
+      const id = localStorage.getItem('id');
+      const token = localStorage.getItem('authToken');
+      const response = await fetch(`${REACT_APP_BASE_URL}/api/employee/${id}/password`, {
+        method: 'PATCH',
+        headers: {
+          'Content-Type': 'application/json',
+          'authToken': token
+        },
+        body: JSON.stringify({
+          password: newPassword
+        }),
+      });
+      const result = await response.json();
+      if (response.ok) {
+        console.log('Password updated successfully');
+      } else {
+        console.error('Error updating password:', result);
+      }
+    } catch (error) {
+      console.error('Error:', error);
+    }
   };
 
-  const handleUpdatePassword = () => {
-    // You can add logic here to update the password
-    console.log("Old Password:", oldPassword);
-    console.log("New Password:", newPassword);
-  };
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      const formData = new FormData();
+      formData.append('firstName', userData.firstName);
+      formData.append('lastName', userData.lastName);
+      if (photo) {
+        formData.append('profilePicture', photo);
+      }
+      const id = localStorage.getItem('id');
+      const token = localStorage.getItem('authToken');
+      const response = await fetch(`${REACT_APP_BASE_URL}/api/employee/${id}`, {
+        method: 'PATCH',
+        headers: { 'authToken': token },
+        body: formData,
+      });
 
-  const handleSubmit = () => {
-    // You can add logic here to update the personal information
+      const result = await response.json();
+      if (response.ok) {
+        console.log('User data updated successfully');
+      } else {
+        console.error('Error updating user data:', result);
+      }
+    } catch (error) {
+      console.error('Error:', error);
+    }
   };
  
   const logout =()=>{
@@ -78,15 +138,14 @@ function AdminHeader() {
         <div className='flex'>
         <div onClick={handleClick} >
           <div className="profile-wrap" onClick={toggleAccount}>
-            {placeholderData && placeholderData.profilePicture && !imageError ? (
+            {userData && userData.profilePicture ? (
               <img
-                src={placeholderData.profilePicture}
+                src={userData.profilePicture}
                 alt="avatar"
                 className="profile-avatar"
-                onError={() => setImageError(true)}
               />
             ) : (
-              <div className="profile-avatar placeholder">{placeholderData.firstName ? placeholderData.firstName.charAt(0) : 'A'}</div>
+              <div className="profile-avatar placeholder">{userData && userData.firstName ? userData.firstName.charAt(0) : 'A'}</div>
             )}
           </div>
           </div>
@@ -134,7 +193,7 @@ function AdminHeader() {
             </ul>
           </nav>
           {personalInformation === true ? (
-            <form style={{border:'none'}}  className='flex flex-col'>
+            <form style={{border:'none'}} className='flex flex-col' onSubmit={handleSubmit}>
               <div className="profile-modal__body">
                 <div className="profile-preview profile-preview--center">
                   <label htmlFor='file-upload' className=''>
@@ -152,15 +211,15 @@ function AdminHeader() {
                         width={'120px'}
                         height={'120px'}
                       />
-                    ) : placeholderData.profilePicture ? (
+                    ) : userData.profilePicture ? (
                       <img
-                        src={placeholderData.profilePicture}
+                        src={userData.profilePicture}
                         alt='Profile'
                         width={'120px'}
                         height={'120px'}
                       />
                     ) : (
-                      <div className="avatar-large">{placeholderData.firstName ? placeholderData.firstName.charAt(0) : 'A'}</div>
+                      <div className="avatar-large">{userData && userData.firstName ? userData.firstName.charAt(0) : 'A'}</div>
                     )}
                     <div className="profile-caption">Profile Picture:</div>
                   </label>
@@ -168,27 +227,43 @@ function AdminHeader() {
 
                 <div className="profile-fields form-fields">
                   <label>First Name:</label>
-                  <input type="text" placeholder={placeholderData.firstName} />
+                  <input
+                    type="text"
+                    value={userData.firstName}
+                    onChange={(e) => setUserData({ ...userData, firstName: e.target.value })}
+                  />
 
                   <label>Last Name:</label>
-                  <input type="text" placeholder={placeholderData.lastName} />
+                  <input
+                    type="text"
+                    value={userData.lastName}
+                    onChange={(e) => setUserData({ ...userData, lastName: e.target.value })}
+                  />
 
                   <label>Email:</label>
-                  <input type="text" placeholder={placeholderData.email} readOnly />
+                  <input type="text" value={userData.email} readOnly />
 
                   <div className="profile-modal__actions">
-                    <button className="btn-submit" onClick={handleSubmit}>Submit</button>
+                    <button type="submit" className="btn-submit">Submit</button>
                   </div>
                 </div>
               </div>
             </form>
           ) : (
-            <form style={{border:'none'}}  className='flex flex-col'>
+            <form style={{border:'none'}} className='flex flex-col'>
               <label>Old Password:</label>
-              <input type="password" placeholder={placeholderData.password} value={oldPassword} onChange={(e) => setOldPassword(e.target.value)} readOnly />
+              <input
+                type="password"
+                value={oldPassword}
+                onChange={(e) => setOldPassword(e.target.value)}
+              />
               <label>New Password:</label>
-              <input type="password" value={newPassword} onChange={(e) => setNewPassword(e.target.value)} />
-              <button onClick={handleUpdatePassword}>Update Password</button>
+              <input
+                type="password"
+                value={newPassword}
+                onChange={(e) => setNewPassword(e.target.value)}
+              />
+              <button type="button" onClick={handleUpdatePassword}>Update Password</button>
             </form>
           )}
         </div>
